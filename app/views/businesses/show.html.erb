@@ -1,0 +1,71 @@
+<div>
+  <div>
+    <h1>
+      Business #<%= @the_business.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/businesses">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_business/<%= @the_business.id %>">
+          Delete business
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_business.name %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_business.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_business.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit business
+    </h2>
+
+    <form action="/modify_business/<%= @the_business.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_business.name %>">
+      </div>
+
+      <button>
+        Update business
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

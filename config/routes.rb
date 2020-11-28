@@ -2,6 +2,25 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Business resource:
+
+  # CREATE
+  post("/insert_business", { :controller => "businesses", :action => "create" })
+          
+  # READ
+  get("/businesses", { :controller => "businesses", :action => "index" })
+  
+  get("/businesses/:path_id", { :controller => "businesses", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_business/:path_id", { :controller => "businesses", :action => "update" })
+  
+  # DELETE
+  get("/delete_business/:path_id", { :controller => "businesses", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Category resource:
 
   # CREATE

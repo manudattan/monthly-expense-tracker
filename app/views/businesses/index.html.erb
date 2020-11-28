@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      List of all businesses
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new business
+    </h2>
+
+    <form action="/insert_business" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <button>
+        Create business
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_businesses.each do |a_business| %>
+      <tr>
+        <td>
+          <%= a_business.id %>
+        </td>
+
+        <td>
+          <%= a_business.name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_business.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_business.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/businesses/<%= a_business.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
