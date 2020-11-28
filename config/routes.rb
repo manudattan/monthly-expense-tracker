@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-
-
-  # Routes for the Budget resource:
+    # Routes for the Budget resource:
 
   # CREATE
   post("/insert_budget", { :controller => "budgets", :action => "create" })
@@ -80,6 +78,12 @@ Rails.application.routes.draw do
 
   # Routes for the User account:
 
+  # HOME PAGE
+  get("/", { :controller => "user_authentication", :action => "homepage" })
+  
+  # DASHBOARD
+  get("/dashboard", { :controller => "user_authentication", :action => "dashboard" })
+  
   # SIGN UP FORM
   get("/user_sign_up", { :controller => "user_authentication", :action => "sign_up_form" })        
   # CREATE RECORD
