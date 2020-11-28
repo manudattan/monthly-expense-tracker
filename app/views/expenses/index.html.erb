@@ -16,48 +16,39 @@
 
     <form action="/insert_expense" method="post">
       <div>
-        <label for="date_box">
-          Date
-        </label>
-
+        <label for="date_box">Date</label>
         <input type="date" id="date_box" name="query_date">
+      
+
+      
+        <label for="category_id_box">Category</label>
+        <select id="category_id_box" name="query_category_id">
+          <% Category.all.order({:name => :asc}).each do |a_category|%>
+            <option value="<%= a_category.id %>">
+              <%= a_category.name %>
+            </option>
+          <% end %>
+        </select>
+
+              
+        <label for="business_id_box">Business</label>
+        <select id="business_id_box" name="query_business_id">
+          <% Business.all.order({:name => :asc}).each do |a_business|%>
+            <option value="<%= a_business.id %>">
+              <%= a_business.name %>
+            </option>
+          <% end %>
+        </select> 
+        
+              
+        <label for="amount_box">Amount</label>
+        <input type="text" id="amount_box" name="query_amount" placeholder="$0.00">
+      
+        <button>Create expense</button>
+      
       </div>
 
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
-        <label for="category_id_box">
-          Category
-        </label>
-
-        <input type="text" id="category_id_box" name="query_category_id">
-      </div>
-
-      <div>
-        <label for="business_id_box">
-          Business
-        </label>
-
-        <input type="text" id="business_id_box" name="query_business_id">
-      </div>
-
-      <div>
-        <label for="amount_box">
-          Amount
-        </label>
-
-        <input type="text" id="amount_box" name="query_amount">
-      </div>
-
-      <button>
-        Create expense
-      </button>
+      
     </form>
   </div>
 </div>
