@@ -1,0 +1,131 @@
+<div>
+  <div>
+    <h1>
+      Budget #<%= @the_budget.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/budgets">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_budget/<%= @the_budget.id %>">
+          Delete budget
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_budget.user_id %>
+      </dd>
+
+      <dt>
+        Date
+      </dt>
+      <dd>
+        <%= @the_budget.date %>
+      </dd>
+
+      <dt>
+        Amount
+      </dt>
+      <dd>
+        <%= @the_budget.amount %>
+      </dd>
+
+      <dt>
+        Category
+      </dt>
+      <dd>
+        <%= @the_budget.category_id %>
+      </dd>
+
+      <dt>
+        Alert percentage
+      </dt>
+      <dd>
+        <%= @the_budget.alert_percentage %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_budget.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_budget.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit budget
+    </h2>
+
+    <form action="/modify_budget/<%= @the_budget.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_budget.user_id %>">
+      </div>
+
+      <div>
+        <label for="date_box">
+          Date
+        </label>
+
+        <input type="date" id="date_box" name="query_date" value="<%= @the_budget.date %>">
+      </div>
+
+      <div>
+        <label for="amount_box">
+          Amount
+        </label>
+
+        <input type="text" id="amount_box" name="query_amount" value="<%= @the_budget.amount %>">
+      </div>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category_id" value="<%= @the_budget.category_id %>">
+      </div>
+
+      <div>
+        <label for="alert_percentage_box">
+          Alert percentage
+        </label>
+
+        <input type="text" id="alert_percentage_box" name="query_alert_percentage" value="<%= @the_budget.alert_percentage %>">
+      </div>
+
+      <button>
+        Update budget
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

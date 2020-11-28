@@ -2,6 +2,25 @@ Rails.application.routes.draw do
 
 
 
+  # Routes for the Budget resource:
+
+  # CREATE
+  post("/insert_budget", { :controller => "budgets", :action => "create" })
+          
+  # READ
+  get("/budgets", { :controller => "budgets", :action => "index" })
+  
+  get("/budgets/:path_id", { :controller => "budgets", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_budget/:path_id", { :controller => "budgets", :action => "update" })
+  
+  # DELETE
+  get("/delete_budget/:path_id", { :controller => "budgets", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Expense resource:
 
   # CREATE
