@@ -1,0 +1,150 @@
+<div>
+  <div>
+    <h1>
+      List of all expenses
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new expense
+    </h2>
+
+    <form action="/insert_expense" method="post">
+      <div>
+        <label for="date_box">
+          Date
+        </label>
+
+        <input type="date" id="date_box" name="query_date">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category_id">
+      </div>
+
+      <div>
+        <label for="business_id_box">
+          Business
+        </label>
+
+        <input type="text" id="business_id_box" name="query_business_id">
+      </div>
+
+      <div>
+        <label for="amount_box">
+          Amount
+        </label>
+
+        <input type="text" id="amount_box" name="query_amount">
+      </div>
+
+      <button>
+        Create expense
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Date
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Category
+        </th>
+
+        <th>
+          Business
+        </th>
+
+        <th>
+          Amount
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_expenses.each do |an_expense| %>
+      <tr>
+        <td>
+          <%= an_expense.id %>
+        </td>
+
+        <td>
+          <%= an_expense.date %>
+        </td>
+
+        <td>
+          <%= an_expense.user_id %>
+        </td>
+
+        <td>
+          <%= an_expense.category_id %>
+        </td>
+
+        <td>
+          <%= an_expense.business_id %>
+        </td>
+
+        <td>
+          <%= an_expense.amount %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_expense.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_expense.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/expenses/<%= an_expense.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
