@@ -21,11 +21,14 @@
         </label>
 
         <input type="text" id="name_box" name="query_name">
+      
+        <button>
+          Create category
+        </button>
+      
       </div>
 
-      <button>
-        Create category
-      </button>
+      
     </form>
   </div>
 </div>
@@ -33,51 +36,27 @@
 <hr>
 <div>
   <div>
-    <table>
+    <table border="1">
       <tr>
         <th>
-          ID
+          No:
         </th>
 
         <th>
           Name
         </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
       </tr>
 
-      <% @list_of_categories.each do |a_category| %>
-      <tr>
-        <td>
-          <%= a_category.id %>
-        </td>
+      <% @list_of_categories.each_with_index do |a_category, the_index| %>
+        <tr>
+          <td>
+            <%= the_index + 1 %>
+          </td>
 
-        <td>
-          <%= a_category.name %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_category.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_category.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/categories/<%= a_category.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
+          <td>
+            <%= a_category.name %>
+          </td>
+        </tr>
       <% end %>
     </table>
   </div>
