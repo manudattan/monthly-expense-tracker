@@ -83,6 +83,8 @@ Rails.application.routes.draw do
   
   # DASHBOARD
   get("/dashboard", { :controller => "user_authentication", :action => "dashboard" })
+
+  
   
   # SIGN UP FORM
   get("/user_sign_up", { :controller => "user_authentication", :action => "sign_up_form" })        

@@ -1,16 +1,22 @@
 class UserAuthenticationController < ApplicationController
   # Uncomment this if you want to force users to sign in before any other actions
   # skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
-
+  require "date"
   def homepage
     render({ :template => "user_authentication/homepage.html.erb" })
   end
 
-   def dashboard
+  def dashboard
+    @matching_budgets = @current_user.budgets
+    @matching_expenses = @current_user.expenses
+
+    #@q =  @current_user.expenses.ransack(params[:q])
+    #@matching_expenses = @q.result
+    
     render({ :template => "user_authentication/dashboard.html.erb" })
   end
   
-  def sign_in_form
+    def sign_in_form
     render({ :template => "user_authentication/sign_in.html.erb" })
   end
 

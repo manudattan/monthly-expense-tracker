@@ -1,9 +1,13 @@
 class ExpensesController < ApplicationController
   def index
     #matching_expenses = Expense.where({:user_id => @current_user.id})
-    matching_expenses = @current_user.expenses
+    #matching_expenses = @current_user.expenses
 
-    @list_of_expenses = matching_expenses.order({ :created_at => :desc })
+    @q =  @current_user.expenses.ransack(params[:q])
+    @q.result
+
+
+    @list_of_expenses = @q.result.order({ :created_at => :desc })
 
     render({ :template => "expenses/index.html.erb" })
   end

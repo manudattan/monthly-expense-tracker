@@ -60,70 +60,90 @@
 </div>
 
 <hr>
-<div>
+
+  <%= search_form_for @q do |f| %>
+    <h2>Filter your expenses:</h2>
+      <p>
+        <div>
+          <%= f.label :category_id_eq	, "Category" %>
+          <%= f.text_field :category_id_eq, :placeholder => "Enter category" %>
+        
+          <%= f.label :date_gteq, "Start Date" %>
+          <%= f.date_field :date_gteq, :placeholder => "Enter start date" %>
+        
+          <%= f.label :date_lteq, "End date" %>
+          <%= f.date_field :date_lteq, :placeholder => "Enter end date" %>
+
+          <%= f.submit :class => "btn btn-primary btn-block" %>
+
+          <a href="/expenses">Clear filters</a>
+        </div>
+      </p>  
+  <% end %>
   <div>
-    <table border="1">
-      <tr>
-        
-        <th>
-          Date
-        </th>
+    <div>
+      <table border="1">
+        <tr>
+          
+          <th>
+            Date
+          </th>
 
-        
-        <th>
-          Category
-        </th>
+          
+          <th>
+            Category
+          </th>
 
-        <th>
-          Business
-        </th>
+          <th>
+            Business
+          </th>
 
-        <th>
-          Amount
-        </th>
+          <th>
+            Amount
+          </th>
 
-        <th>
-          Update
-        </th>
+          <th>
+            Update
+          </th>
 
-        <th>
-          Delete
-        </th>
-      </tr>
-
-      <% @list_of_expenses.each do |an_expense| %>
-      <tr>
-        <td>
-          <%= an_expense.date %>
-        </td>
-
-        <td>
-          <%= an_expense.category.name %>
-        </td>
-
-        <td>
-          <%= an_expense.business.name %>
-        </td>
-
-        <td>
-          <%= an_expense.amount %>
-        </td>
-
-        <td>
-          <a href="/expenses/<%= an_expense.id %>">
-            Edit
-          </a>
-        </td>
-
-        <td>
-          <a href="/delete_expense/<%= an_expense.id %>">
+          <th>
             Delete
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
+          </th>
+        </tr>
+
+        <% @list_of_expenses.each do |an_expense| %>
+        <tr>
+          <td>
+            <%= an_expense.date %>
+          </td>
+
+          <td>
+            <%= an_expense.category.name %>
+          </td>
+
+          <td>
+            <%= an_expense.business.name %>
+          </td>
+
+          <td>
+            <%= an_expense.amount %>
+          </td>
+
+          <td>
+            <a href="/expenses/<%= an_expense.id %>">
+              Edit
+            </a>
+          </td>
+
+          <td>
+            <a href="/delete_expense/<%= an_expense.id %>">
+              Delete
+            </a>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
-</div>
 
 <hr>
