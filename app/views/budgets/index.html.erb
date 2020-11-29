@@ -60,69 +60,91 @@
 </div>
 
 <hr>
-<div>
+  <%= search_form_for @q do |f| %>
+    <h2>Filter your budget:</h2>
+      <p>
+        <div>
+          
+            
+          <%= f.label :category_name_eq, "Category" %>
+          <%= f.select :category_name_eq, options_from_collection_for_select(Category.all, :name, :name, @q.category_name_eq), { :include_blank => true } %>
+
+              
+          <%= f.label :date_gteq, "Start Date" %>
+          <%= f.date_field :date_gteq, :placeholder => "Enter start date" %>
+        
+          <%= f.label :date_lteq, "End date" %>
+          <%= f.date_field :date_lteq, :placeholder => "Enter end date" %>
+
+          <%= f.submit :class => "btn btn-primary btn-block" %>
+
+          <a href="/budgets">Clear filters</a>
+        </div>
+      </p>  
+  <% end %>
+
   <div>
-    <table border="1">
-      <tr>
-        <th>
-          Date
-        </th>
+    <div>
+      <table border="1">
+        <tr>
+          <th>
+            Date
+          </th>
 
-        <th>
-          Amount
-        </th>
+          <th>
+            Amount
+          </th>
 
-        <th>
-          Category
-        </th>
+          <th>
+            Category
+          </th>
 
-        <th>
-          Alert percentage
-        </th>
+          <th>
+            Alert percentage
+          </th>
 
-        <th>
-          Update
-        </th>
-
-        <th>
-          Delete
-        </th>
-
-       </tr>
-
-      <% @list_of_budgets.each do |a_budget| %>
-      <tr>
-        <td>
-          <%= a_budget.date %>
-        </td>
-
-        <td>
-          <%= a_budget.amount %>
-        </td>
-
-        <td>
-          <%= a_budget.category.name %>
-        </td>
-
-        <td>
-          <%= a_budget.alert_percentage %>
-        </td>
-
-        <td>
-          <a href="/budgets/<%= a_budget.id %>">
+          <th>
             Update
-          </a>
-        </td>
+          </th>
 
-        <td>
-          <a href="/delete_budget/<%= a_budget.id %>">
+          <th>
             Delete
-          </a>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
+          </th>
 
+        </tr>
+
+        <% @list_of_budgets.each do |a_budget| %>
+        <tr>
+          <td>
+            <%= a_budget.date %>
+          </td>
+
+          <td>
+            <%= a_budget.amount %>
+          </td>
+
+          <td>
+            <%= a_budget.category.name %>
+          </td>
+
+          <td>
+            <%= a_budget.alert_percentage %>
+          </td>
+
+          <td>
+            <a href="/budgets/<%= a_budget.id %>">
+              Update
+            </a>
+          </td>
+
+          <td>
+            <a href="/delete_budget/<%= a_budget.id %>">
+              Delete
+            </a>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 <hr>

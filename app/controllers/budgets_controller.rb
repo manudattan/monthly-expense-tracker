@@ -4,6 +4,10 @@ class BudgetsController < ApplicationController
     matching_budgets = @current_user.budgets
     @list_of_budgets = matching_budgets.order({ :created_at => :desc })
 
+
+    @q =  @current_user.budgets.ransack(params[:q])
+    @list_of_budgets = @q.result(:distinct => true).includes(:category).order({ :created_at => :desc })
+
     render({ :template => "budgets/index.html.erb" })
   end
 
