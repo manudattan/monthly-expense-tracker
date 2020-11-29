@@ -16,14 +16,6 @@
 
     <form action="/insert_budget" method="post">
       <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
         <label for="date_box">
           Date
         </label>
@@ -40,11 +32,16 @@
       </div>
 
       <div>
-        <label for="category_id_box">
-          Category
-        </label>
+        <label for="category_id_box">Category</label>
 
-        <input type="text" id="category_id_box" name="query_category_id">
+        <select id="category_id_box" name="query_category_id">
+          <% Category.all.order({:name => :asc}).each do |a_category|%>
+            <option value="<%= a_category.id %>">
+              <%= a_category.name %>
+            </option>
+          <% end %>
+        </select>
+        <a href="/categories">Add a new category</a>
       </div>
 
       <div>
@@ -65,16 +62,8 @@
 <hr>
 <div>
   <div>
-    <table>
+    <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          User
-        </th>
-
         <th>
           Date
         </th>
@@ -92,27 +81,17 @@
         </th>
 
         <th>
-          Created at
+          Update
         </th>
 
         <th>
-          Updated at
+          Delete
         </th>
 
-        <th>
-        </th>
-      </tr>
+       </tr>
 
       <% @list_of_budgets.each do |a_budget| %>
       <tr>
-        <td>
-          <%= a_budget.id %>
-        </td>
-
-        <td>
-          <%= a_budget.user_id %>
-        </td>
-
         <td>
           <%= a_budget.date %>
         </td>
@@ -122,7 +101,7 @@
         </td>
 
         <td>
-          <%= a_budget.category_id %>
+          <%= a_budget.category.name %>
         </td>
 
         <td>
@@ -130,15 +109,14 @@
         </td>
 
         <td>
-          <%= time_ago_in_words(a_budget.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_budget.updated_at) %> ago
+          <a href="/budgets/<%= a_budget.id %>">
+            Update
+          </a>
         </td>
 
         <td>
-          <a href="/budgets/<%= a_budget.id %>">
-            Show details
+          <a href="/delete_budget/<%= a_budget.id %>">
+            Delete
           </a>
         </td>
       </tr>

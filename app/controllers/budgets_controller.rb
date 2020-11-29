@@ -1,7 +1,7 @@
 class BudgetsController < ApplicationController
   def index
-    matching_budgets = Budget.all
-
+    #matching_budgets = Budget.all
+    matching_budgets = @current_user.budgets
     @list_of_budgets = matching_budgets.order({ :created_at => :desc })
 
     render({ :template => "budgets/index.html.erb" })
@@ -19,7 +19,7 @@ class BudgetsController < ApplicationController
 
   def create
     the_budget = Budget.new
-    the_budget.user_id = params.fetch("query_user_id")
+    the_budget.user_id = @current_user.id
     the_budget.date = params.fetch("query_date")
     the_budget.amount = params.fetch("query_amount")
     the_budget.category_id = params.fetch("query_category_id")
