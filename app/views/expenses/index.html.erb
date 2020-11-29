@@ -18,9 +18,9 @@
       <div>
         <label for="date_box">Date</label>
         <input type="date" id="date_box" name="query_date">
-      
+      </div>
 
-      
+      <div>
         <label for="category_id_box">Category</label>
         <select id="category_id_box" name="query_category_id">
           <% Category.all.order({:name => :asc}).each do |a_category|%>
@@ -29,8 +29,10 @@
             </option>
           <% end %>
         </select>
+        <a href="/categories">Add a new category</a>
+      </div>
 
-              
+      <div>        
         <label for="business_id_box">Business</label>
         <select id="business_id_box" name="query_business_id">
           <% Business.all.order({:name => :asc}).each do |a_business|%>
@@ -38,14 +40,18 @@
               <%= a_business.name %>
             </option>
           <% end %>
-        </select> 
-        
-              
+        </select>
+        <a href="/businesses">Add a new business</a> 
+      </div>  
+
+
+      <div>        
         <label for="amount_box">Amount</label>
         <input type="text" id="amount_box" name="query_amount" placeholder="$0.00">
-      
+      </div>
+
+      <div>
         <button>Create expense</button>
-      
       </div>
 
       
@@ -56,20 +62,14 @@
 <hr>
 <div>
   <div>
-    <table>
+    <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
-
+        
         <th>
           Date
         </th>
 
-        <th>
-          User
-        </th>
-
+        
         <th>
           Category
         </th>
@@ -83,37 +83,26 @@
         </th>
 
         <th>
-          Created at
+          Update
         </th>
 
         <th>
-          Updated at
-        </th>
-
-        <th>
+          Delete
         </th>
       </tr>
 
       <% @list_of_expenses.each do |an_expense| %>
       <tr>
         <td>
-          <%= an_expense.id %>
-        </td>
-
-        <td>
           <%= an_expense.date %>
         </td>
 
         <td>
-          <%= an_expense.user_id %>
+          <%= an_expense.category.name %>
         </td>
 
         <td>
-          <%= an_expense.category_id %>
-        </td>
-
-        <td>
-          <%= an_expense.business_id %>
+          <%= an_expense.business.name %>
         </td>
 
         <td>
@@ -121,15 +110,14 @@
         </td>
 
         <td>
-          <%= time_ago_in_words(an_expense.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(an_expense.updated_at) %> ago
+          <a href="/expenses/<%= an_expense.id %>">
+            Edit
+          </a>
         </td>
 
         <td>
-          <a href="/expenses/<%= an_expense.id %>">
-            Show details
+          <a href="/delete_expense/<%= an_expense.id %>">
+            Delete
           </a>
         </td>
       </tr>
