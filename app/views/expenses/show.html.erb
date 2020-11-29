@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Details for <%= @the_expense.category.name%> expense (<%= @the_expense.business.name%>) on <%= @the_expense.date%>
+      <%= @the_expense.category.name%> expense (<%= @the_expense.business.name%>) on <%= @the_expense.date%>: $<%= @the_expense.amount%> 
     </h1>
 
     <div>
@@ -17,57 +17,6 @@
         </a>
       </div>
     </div>
-
-    <dl>
-      <dt>
-        Date
-      </dt>
-      <dd>
-        <%= @the_expense.date %>
-      </dd>
-
-      <dt>
-        User
-      </dt>
-      <dd>
-        <%= @the_expense.user_id %>
-      </dd>
-
-      <dt>
-        Category
-      </dt>
-      <dd>
-        <%= @the_expense.category_id %>
-      </dd>
-
-      <dt>
-        Business
-      </dt>
-      <dd>
-        <%= @the_expense.business_id %>
-      </dd>
-
-      <dt>
-        Amount
-      </dt>
-      <dd>
-        <%= @the_expense.amount %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_expense.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_expense.updated_at) %> ago
-      </dd>
-    </dl>
   </div>
 </div>
 
@@ -82,48 +31,17 @@
 
     <form action="/modify_expense/<%= @the_expense.id %>"  method="post" >
       <div>
-        <label for="date_box">
-          Date
-        </label>
-
+        <label for="date_box">Date</label>
         <input type="date" id="date_box" name="query_date" value="<%= @the_expense.date %>">
-      </div>
-
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_expense.user_id %>">
-      </div>
-
-      <div>
-        <label for="category_id_box">
-          Category
-        </label>
-
-        <input type="text" id="category_id_box" name="query_category_id" value="<%= @the_expense.category_id %>">
-      </div>
-
-      <div>
-        <label for="business_id_box">
-          Business
-        </label>
-
-        <input type="text" id="business_id_box" name="query_business_id" value="<%= @the_expense.business_id %>">
-      </div>
-
-      <div>
-        <label for="amount_box">
-          Amount
-        </label>
-
+        
+        <label for="amount_box">Amount</label>
         <input type="text" id="amount_box" name="query_amount" value="<%= @the_expense.amount %>">
+      
+        <input type="hidden" id="category_id_box" name="query_category_id" value="<%= @the_expense.category_id %>"> 
+        <input type="hidden" id="business_id_box" name="query_business_id" value="<%= @the_expense.business_id %>">
+      
+        <button>Update expense</button>
       </div>
-
-      <button>
-        Update expense
-      </button>
     </form>
   </div>
 </div>

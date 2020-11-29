@@ -39,7 +39,7 @@ class ExpensesController < ApplicationController
     the_expense = Expense.where({ :id => the_id }).at(0)
 
     the_expense.date = params.fetch("query_date")
-    the_expense.user_id = params.fetch("query_user_id")
+    the_expense.user_id = @current_user.id
     the_expense.category_id = params.fetch("query_category_id")
     the_expense.business_id = params.fetch("query_business_id")
     the_expense.amount = params.fetch("query_amount")
