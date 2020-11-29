@@ -65,9 +65,14 @@
     <h2>Filter your expenses:</h2>
       <p>
         <div>
-          <%= f.label :category_id_eq	, "Category" %>
-          <%= f.text_field :category_id_eq, :placeholder => "Enter category" %>
-        
+          
+            
+          <%= f.label :category_name_eq, "Category" %>
+          <%= f.select :category_name_eq, options_from_collection_for_select(Category.all, :name, :name, @q.category_name_eq), { :include_blank => true } %>
+
+          <%= f.label :business_name_eq, "Business" %>
+          <%= f.select :business_name_eq, options_from_collection_for_select(Business.all, :name, :name, @q.business_name_eq), { :include_blank => true } %>
+          
           <%= f.label :date_gteq, "Start Date" %>
           <%= f.date_field :date_gteq, :placeholder => "Enter start date" %>
         

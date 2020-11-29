@@ -4,10 +4,9 @@ class ExpensesController < ApplicationController
     #matching_expenses = @current_user.expenses
 
     @q =  @current_user.expenses.ransack(params[:q])
-    @q.result
-
-
-    @list_of_expenses = @q.result.order({ :created_at => :desc })
+   
+    @list_of_expenses = @q.result(:distinct => true).includes(:category, :business).order({ :created_at => :desc })
+   
 
     render({ :template => "expenses/index.html.erb" })
   end
