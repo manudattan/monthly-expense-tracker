@@ -21,11 +21,9 @@
         </label>
 
         <input type="text" id="name_box" name="query_name">
+      
+        <button>Create business</button>
       </div>
-
-      <button>
-        Create business
-      </button>
     </form>
   </div>
 </div>
@@ -33,51 +31,28 @@
 <hr>
 <div>
   <div>
-    <table>
+    <table border="1">
       <tr>
         <th>
-          ID
+          No:
         </th>
 
         <th>
           Name
         </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
+        
       </tr>
 
-      <% @list_of_businesses.each do |a_business| %>
-      <tr>
-        <td>
-          <%= a_business.id %>
-        </td>
+      <% @list_of_businesses.each_with_index do |a_business, the_index| %>
+        <tr>
+          <td>
+            <%= the_index + 1%>
+          </td>
 
-        <td>
-          <%= a_business.name %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_business.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_business.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/businesses/<%= a_business.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
+          <td>
+            <%= a_business.name %>
+          </td>
+        </tr>
       <% end %>
     </table>
   </div>
