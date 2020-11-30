@@ -1,6 +1,7 @@
 <h2>Here is your summary for the period from <%= @start_date %> to <%= @end_date %>.</h2>
 
 <%= @list_of_expense_categories %>
+<%= @list_of_budget_categories %>
 
 <hr>
   <h2>Expenses</h2>
@@ -111,15 +112,15 @@
             
             <% @list_of_expense.each do |an_expense| %>
               <% if an_expense.category_id == a_category%>
-                <% @category_total = @category_total + an_expense.amount %>
+                <% @category_expense_total = @category_expense_total + an_expense.amount %>
               <% end %>
             <% end %>    
 
             <td>
-              <%= @category_total %>
+              <%= @category_expense_total %>
             </td>
           </tr>
-          <% @category_total = 0 %>
+          <% @category_expense_total = 0 %>
         <% end %>
       </table>
     </div>
