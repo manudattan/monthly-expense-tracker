@@ -81,82 +81,7 @@
 </hr>
 
 <hr>
-  <h2>Category Budgets</h2>
-  <div>
-    <div>
-      <table border="1">
-        <tr>
-                  
-          <th>
-            Category
-          </th>
-
-          <th>
-            Amount
-          </th>
-        </tr>
-
-        <% @list_of_budget_categories.each do |a_category| %>
-          <tr>
-            <td>
-              <%= Category.all.where({:id => a_category}).at(0).name %>
-            </td>
-            <% @list_of_budget.each do |a_budget| %>
-              <% if a_budget.category_id == a_category %>
-                <% @category_budget_total = @category_budget_total + a_budget.amount %>
-              <% end %>
-            <% end %>  
-            <td>
-              <%= @category_budget_total %>
-            </td>
-          </tr>
-          <% @category_budget_total = 0 %>
-        <% end %>
-      </table>
-    </div>
-  </div>
-
-</hr>
-<hr>
-  <h2>Category Expenses</h2>
-  <div>
-    <div>
-      <table border="1">
-        <tr>
-          <th>
-            Category
-          </th>
-
-          <th>
-            Amount
-          </th>
-        </tr>
-
-        <% @list_of_expense_categories.each do |a_category| %>
-          <tr>
-            <td>
-                  <%= Category.all.where({:id => a_category}).at(0).name %>
-            </td>
-            
-            <% @list_of_expense.each do |an_expense| %>
-              <% if an_expense.category_id == a_category%>
-                <% @category_expense_total = @category_expense_total + an_expense.amount %>
-              <% end %>
-            <% end %>    
-
-            <td>
-              <%= @category_expense_total %>
-            </td>
-          </tr>
-          <% @category_expense_total = 0 %>
-        <% end %>
-      </table>
-    </div>
-  </div>
-</hr>
-
-<hr>
-  <h2>Budgets</h2>
+  <h2>Budget Entries</h2>
   <div>
     <div>
       <table border="1">
@@ -195,7 +120,7 @@
 </hr>
 
 <hr>
-  <h2>Expenses</h2>
+  <h2>Expense Entries</h2>
   <div>
     <div>
       <table border="1">
