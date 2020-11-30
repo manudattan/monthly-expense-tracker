@@ -7,15 +7,27 @@ class UserAuthenticationController < ApplicationController
   end
 
   def dashboard
-    @matching_budgets = @current_user.budgets
-    @matching_expenses = @current_user.expenses
-
-    #@q =  @current_user.expenses.ransack(params[:q])
-    #@matching_expenses = @q.result
-    
+            
     render({ :template => "user_authentication/dashboard.html.erb" })
   end
   
+  def show_dashboard
+    @start_date = params.fetch("query_start_date")
+    @end_date = params.fetch("query_end_date")
+
+    matching_budgets = @current_user.budgets
+    @list_of_budget = matching_budgets.where("date >= ?", @start_date).where("date <= ?", @end_date)
+
+    matching_expenses = @current_user.expenses
+    @list_of_expense = matching_expenses.where("date >= ?", @start_date).where("date <= ?", @end_date) 
+    matching_expense_categories = @list_of_expense.map_relation_to_array(:category_id)
+    @list_of_expense_categories = matching_expense_categories.uniq
+    @category_total = 0
+    
+
+    render({ :template => "user_authentication/show_dashboard.html.erb" })
+  end  
+
     def sign_in_form
     render({ :template => "user_authentication/sign_in.html.erb" })
   end

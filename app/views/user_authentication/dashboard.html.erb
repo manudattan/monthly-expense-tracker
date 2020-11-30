@@ -4,49 +4,30 @@
 <%= @matching_budgets %>
 <%= @matching_expenses %>
 
-<hr>
+<div>
   <div>
-    <table border="1">
-      <tr>
-         
-        <th>
-          Date
-        </th>
+    <h2>
+      Select a date range
+    </h2>
 
-          
-        <th>
-          Category
-        </th>
+    <form action="/show_dashboard">
+      <div>
+        <label for="date_box_start">Start Date</label>
+        <input type="date" id="date_box_start" name="query_start_date">
+      </div>
 
-        <th>
-          Business
-        </th>
+      <div>
+        <label for="date_box_end">Start Date</label>
+        <input type="date" id="date_box_end" name="query_end_date">
+      </div>
 
-        <th>
-          Amount
-        </th>
-          
-      </tr>
+      <div>
+        <button>View summary</button>
+      </div>
 
-      <% @matching_expenses.each do |an_expense| %>
-        <tr>
-          <td>
-            <%= an_expense.date %>
-          </td>
-
-          <td>
-            <%= an_expense.category.name %>
-          </td>
-
-          <td>
-            <%= an_expense.business.name %>
-          </td>
-
-          <td>
-            <%= an_expense.amount %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+      
+    </form>
   </div>
-</hr>  
+</div>
+
+<hr>
