@@ -7,6 +7,80 @@
 <%= @list_of_combined_categories %>
 
 <hr>
+  <h2>Budgets and Expenses</h2>
+  <div>
+    <div>
+      <table border="1">
+        <tr>
+          <th>
+            Category
+          </th>
+
+          <th>
+            Budget
+          </th>
+
+          <th>
+            Expense
+          </th>
+
+          <th>
+            Status
+          </th>
+
+
+        </tr>
+
+        <% @list_of_combined_categories.each do |a_category| %>
+          <tr>
+            <td>
+                  <%= Category.all.where({:id => a_category}).at(0).name %>
+            </td>
+
+            <% @list_of_budget.each do |a_budget| %>
+              <% if a_budget.category_id == a_category %>
+                <% @category_budget_total = @category_budget_total + a_budget.amount %>
+              <% end %>
+            <% end %>  
+            <td>
+              <%= @category_budget_total %>
+            </td>
+            
+            
+            <% @list_of_expense.each do |an_expense| %>
+              <% if an_expense.category_id == a_category%>
+                <% @category_expense_total = @category_expense_total + an_expense.amount %>
+              <% end %>
+            <% end %>    
+
+            <td>
+              <%= @category_expense_total %>
+            </td>
+            
+            <% if @category_budget_total < @category_expense_total%>
+              <td bgcolor="red">
+                Bad!
+              </td>
+            <% elsif @category_budget_total > @category_expense_total%>  
+              <td bgcolor="green">
+                Good!
+              </td>
+            <% else %>
+              <td bgcolor="yellow">
+                Ok!
+              </td>
+            <% end %>
+            
+            <% @category_budget_total = 0 %>
+            <% @category_expense_total = 0 %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</hr>
+
+<hr>
   <h2>Category Budgets</h2>
   <div>
     <div>
@@ -81,6 +155,44 @@
   </div>
 </hr>
 
+<hr>
+  <h2>Budgets</h2>
+  <div>
+    <div>
+      <table border="1">
+        <tr>
+          <th>
+            Date
+          </th>
+         
+          <th>
+            Category
+          </th>
+
+          <th>
+            Amount
+          </th>
+        </tr>
+
+        <% @list_of_budget.each do |a_budget| %>
+          <tr>
+            <td>
+              <%= a_budget.date %>
+            </td>
+
+            <td>
+              <%= a_budget.category.name %>
+            </td>
+
+            <td>
+              <%= a_budget.amount %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</hr>
 
 <hr>
   <h2>Expenses</h2>
@@ -122,119 +234,6 @@
             <td>
               <%= an_expense.amount %>
             </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  </div>
-</hr>
-
-<hr>
-  <h2>Budgets</h2>
-  <div>
-    <div>
-      <table border="1">
-        <tr>
-          <th>
-            Date
-          </th>
-         
-          <th>
-            Category
-          </th>
-
-          <th>
-            Amount
-          </th>
-        </tr>
-
-        <% @list_of_budget.each do |a_budget| %>
-          <tr>
-            <td>
-              <%= a_budget.date %>
-            </td>
-
-            <td>
-              <%= a_budget.category.name %>
-            </td>
-
-            <td>
-              <%= a_budget.amount %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  </div>
-</hr>
-
-<hr>
-  <h2>Budgets and Expenses</h2>
-  <div>
-    <div>
-      <table border="1">
-        <tr>
-          <th>
-            Category
-          </th>
-
-          <th>
-            Budget
-          </th>
-
-          <th>
-            Expense
-          </th>
-
-          <th>
-            Status
-          </th>
-
-
-        </tr>
-
-        <% @list_of_combined_categories.each do |a_category| %>
-          <tr>
-            <td>
-                  <%= Category.all.where({:id => a_category}).at(0).name %>
-            </td>
-
-            <% @list_of_budget.each do |a_budget| %>
-              <% if a_budget.category_id == a_category %>
-                <% @category_budget_total = @category_budget_total + a_budget.amount %>
-              <% end %>
-            <% end %>  
-            <td>
-              <%= @category_budget_total %>
-            </td>
-            
-            
-            <% @list_of_expense.each do |an_expense| %>
-              <% if an_expense.category_id == a_category%>
-                <% @category_expense_total = @category_expense_total + an_expense.amount %>
-              <% end %>
-            <% end %>    
-
-            <td>
-              <%= @category_expense_total %>
-            </td>
-            
-            <% if @category_budget_total < @category_expense_total%>
-              <td bgcolor="red">
-                Bad!
-              </td>
-            <% elsif @category_budget_total > @category_expense_total%>  
-              <td bgcolor="green">
-                Good!
-              </td>
-            <% else %>
-              <td bgcolor="yellow">
-                Ok!
-              </td>
-            <% end %>
-            
-            <% @category_budget_total = 0 %>
-            <% @category_expense_total = 0 %>
           </tr>
         <% end %>
       </table>
