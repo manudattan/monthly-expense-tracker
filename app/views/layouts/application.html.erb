@@ -17,9 +17,9 @@
 
   <body>
     <% if @current_user == nil %>
-      <h1>Welcome to the monthly expense tracker!!</h1>
+      <h1>Welcome to the expense tracker!!</h1>
     <% else %>
-      <h1>Hello, <%= @current_user.first_name %>!! Welcome your monthly expense tracker!!</h1>
+      <h1>Hello, <%= @current_user.first_name %>!! Welcome to your expense tracker!!</h1>
     <% end %>
     <ul>
       <% if @current_user == nil %>
