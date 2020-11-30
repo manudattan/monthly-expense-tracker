@@ -26,6 +26,8 @@ class UserAuthenticationController < ApplicationController
     matching_expense_categories = @list_of_expense.map_relation_to_array(:category_id)
     @list_of_expense_categories = matching_expense_categories.uniq
     @category_expense_total = 0
+
+    @list_of_combined_categories = @list_of_budget_categories|@list_of_expense_categories
     
 
     render({ :template => "user_authentication/show_dashboard.html.erb" })
