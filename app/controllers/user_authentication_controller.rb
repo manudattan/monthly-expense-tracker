@@ -19,6 +19,7 @@ class UserAuthenticationController < ApplicationController
     @list_of_budget = matching_budgets.where("date >= ?", @start_date).where("date <= ?", @end_date)
     matching_budget_categories = @list_of_budget.map_relation_to_array(:category_id)
     @list_of_budget_categories = matching_budget_categories.uniq
+    @category_budget_total = 0
 
     matching_expenses = @current_user.expenses
     @list_of_expense = matching_expenses.where("date >= ?", @start_date).where("date <= ?", @end_date) 

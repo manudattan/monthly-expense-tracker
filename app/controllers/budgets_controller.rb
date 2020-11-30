@@ -33,7 +33,7 @@ class BudgetsController < ApplicationController
       the_budget.save
       redirect_to("/budgets", { :notice => "Budget created successfully." })
     else
-      redirect_to("/budgets", { :notice => "Budget failed to create successfully." })
+      redirect_to("/budgets", { :alert => "Budget failed to create successfully." })
     end
   end
 
