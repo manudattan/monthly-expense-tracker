@@ -1,10 +1,10 @@
-<div>
+<!--div>
   <div>
     <h1>
       List of all expenses
     </h1>
   </div>
-</div>
+</div-->
 
 <hr>
 
@@ -51,7 +51,7 @@
       </div>
 
       <div>
-        <button>Create expense</button>
+        <button type="submit" class="btn btn-info">Create expense</button>
       </div>
 
       
@@ -79,15 +79,16 @@
           <%= f.label :date_lteq, "End date" %>
           <%= f.date_field :date_lteq, :placeholder => "Enter end date" %>
 
-          <%= f.submit :class => "btn btn-primary btn-block" %>
+          <%= f.submit :class => "btn btn-info" %>
 
-          <a href="/expenses">Clear filters</a>
+          <!--a href="/expenses">Clear filters</a-->
+          <a href="/expenses" class="btn btn-warning active" role="button" aria-pressed="true">Clear filters</a>
         </div>
       </p>  
   <% end %>
   <div>
     <div>
-      <table border="1">
+      <table class="table table-striped">
         <tr>
           
           <th>

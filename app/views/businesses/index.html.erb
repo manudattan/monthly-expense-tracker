@@ -1,11 +1,3 @@
-<div>
-  <div>
-    <h1>
-      List of all businesses
-    </h1>
-  </div>
-</div>
-
 <hr>
 
 <div>
@@ -22,38 +14,50 @@
 
         <input type="text" id="name_box" name="query_name">
       
-        <button>Create business</button>
+        <button type="submit" class="btn btn-info">Create business</button>
       </div>
     </form>
   </div>
 </div>
 
 <hr>
+
 <div>
   <div>
-    <table border="1">
-      <tr>
-        <th>
-          No:
-        </th>
+    <h2>
+      List of all businesses
+    </h1>
+  </div>
+</div>
 
-        <th>
-          Name
-        </th>
-        
-      </tr>
-
-      <% @list_of_businesses.each_with_index do |a_business, the_index| %>
+<div>
+  <div>
+    <table class="table table-striped table-sm">
+      <thead>
         <tr>
-          <td>
-            <%= the_index + 1%>
-          </td>
+          <th  scope="col">
+            #
+          </th>
 
-          <td>
-            <%= a_business.name %>
-          </td>
+          <th  scope="col">
+            Name
+          </th>
         </tr>
-      <% end %>
+      </thead>   
+
+      <tbody>
+        <% @list_of_businesses.each_with_index do |a_business, the_index| %>
+          <tr>
+            <th scope="row">
+              <%= the_index + 1%>
+            </th>
+
+            <td>
+              <%= a_business.name %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>  
     </table>
   </div>
 </div>

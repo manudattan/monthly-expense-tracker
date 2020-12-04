@@ -1,10 +1,3 @@
-<div>
-  <div>
-    <h1>
-      List of all budgets
-    </h1>
-  </div>
-</div>
 
 <hr>
 
@@ -52,7 +45,7 @@
         <input type="text" id="alert_percentage_box" name="query_alert_percentage">
       </div-->
 
-      <button>
+      <button type="submit" class="btn btn-info">
         Create budget
       </button>
     </form>
@@ -76,16 +69,16 @@
           <%= f.label :date_lteq, "End date" %>
           <%= f.date_field :date_lteq, :placeholder => "Enter end date" %>
 
-          <%= f.submit :class => "btn btn-primary btn-block" %>
+          <%= f.submit :class => "btn btn-info" %>
 
-          <a href="/budgets">Clear filters</a>
+          <a href="/budgets" class="btn btn-warning active" role="button" aria-pressed="true">Clear filters</a>
         </div>
       </p>  
   <% end %>
 
   <div>
     <div>
-      <table border="1">
+      <table class="table table-striped">
         <tr>
           <th>
             Date
