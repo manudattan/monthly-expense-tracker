@@ -30,7 +30,7 @@
     </h2>
 
     <form action="/modify_budget/<%= @the_budget.id %>"  method="post" >
-      <div>
+      <div class="form-group">
         <label for="date_box">Date</label>
         <input type="date" id="date_box" name="query_date" value="<%= @the_budget.date %>">
         
@@ -43,7 +43,7 @@
         <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @the_budget.user_id %>">
         <input type="hidden" id="category_id_box" name="query_category_id" value="<%= @the_budget.category_id %>">
 
-        <button>Update budget</button>
+        <button type="submit" class="btn btn-info">Update budget</button>
       
       </div>
     </form>

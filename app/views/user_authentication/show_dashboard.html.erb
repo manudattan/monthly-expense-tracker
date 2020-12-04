@@ -55,15 +55,15 @@
             </td>
             
             <% if @category_budget_total < @category_expense_total%>
-              <td bgcolor="red">
+              <td class="bg-danger">
                 Bad!
               </td>
             <% elsif @category_budget_total > @category_expense_total%>  
-              <td bgcolor="green">
+              <td class="bg-success">
                 Good!
               </td>
             <% else %>
-              <td bgcolor="yellow">
+              <td class="bg-warning">
                 Ok!
               </td>
             <% end %>

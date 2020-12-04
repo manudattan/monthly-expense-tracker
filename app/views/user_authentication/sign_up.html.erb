@@ -1,39 +1,38 @@
-<h1>Sign up</h1>
-
+<hr>
+<h3>Sign up</h3>
+<p>
 <form action="/insert_user" method="post">
 
-  <div>
+  <div class="form-group">
     <label for="email_box">Email</label>
     <input id="email_box" name="query_email" placeholder="Choose a email..." type="text">
   </div>
                  
-  <div>
+  <div class="form-group">
     <label for="first_name_box">First name</label>
-      
     <input type="text" id="first_name_box" name="query_first_name">
   </div>
          
-  <div>
+  <div class="form-group">
     <label for="last_name_box">Last name</label>
-      
     <input type="text" id="last_name_box" name="query_last_name">
   </div>
     
-  <div>
+  <div class="form-group">
     <label for="password_box">Password</label>
     <input id="password_box" name="query_password" placeholder="Choose a password..." type="password">
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="password_confirmation_box">Password Confirmation</label>
     <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your password..." type="password">
   </div>
 
-  <button>
+  <button type="submit" class="btn btn-primary">
     Sign up
   </button>
 </form>
-
+</p>
 <hr>
 
 <p>
