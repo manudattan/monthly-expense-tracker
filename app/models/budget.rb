@@ -20,8 +20,8 @@ class Budget < ApplicationRecord
 
     validates(:amount, { :presence => true })
 
-    validates(:alert_percentage, { :numericality => { :less_than_or_equal_to => 100, :greater_than_or_equal_to => 0 } })
+    #validates(:alert_percentage, { :numericality => { :less_than_or_equal_to => 100, :greater_than_or_equal_to => 0 } })
 
-    validates(:alert_percentage, { :presence => true })
+    #validates(:alert_percentage, { :presence => true })
 
 end

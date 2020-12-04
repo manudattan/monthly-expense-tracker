@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      <%= @the_budget.category.name %> budget on <%= @the_budget.date %>: $<%= @the_budget.amount %>(Alert:<%= @the_budget.alert_percentage %>%)
+      <%= @the_budget.category.name %> budget on <%= @the_budget.date %>: $<%= @the_budget.amount %>
     </h1>
 
     <div>
@@ -37,8 +37,8 @@
         <label for="amount_box">Amount</label>
         <input type="text" id="amount_box" name="query_amount" value="<%= @the_budget.amount %>">
 
-        <label for="alert_percentage_box">Alert percentage</label>
-        <input type="text" id="alert_percentage_box" name="query_alert_percentage" value="<%= @the_budget.alert_percentage %>">
+        <!--label for="alert_percentage_box">Alert percentage</label>
+        <input type="text" id="alert_percentage_box" name="query_alert_percentage" value="<%= @the_budget.alert_percentage %>"-->
         
         <input type="hidden" id="user_id_box" name="query_user_id" value="<%= @the_budget.user_id %>">
         <input type="hidden" id="category_id_box" name="query_category_id" value="<%= @the_budget.category_id %>">

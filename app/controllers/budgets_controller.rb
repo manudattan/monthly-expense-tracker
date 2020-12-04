@@ -27,7 +27,7 @@ class BudgetsController < ApplicationController
     the_budget.date = params.fetch("query_date")
     the_budget.amount = params.fetch("query_amount")
     the_budget.category_id = params.fetch("query_category_id")
-    the_budget.alert_percentage = params.fetch("query_alert_percentage")
+    the_budget.alert_percentage = 0
 
     if the_budget.valid?
       the_budget.save
@@ -45,7 +45,7 @@ class BudgetsController < ApplicationController
     the_budget.date = params.fetch("query_date")
     the_budget.amount = params.fetch("query_amount")
     the_budget.category_id = params.fetch("query_category_id")
-    the_budget.alert_percentage = params.fetch("query_alert_percentage")
+    #the_budget.alert_percentage = params.fetch("query_alert_percentage")
 
     if the_budget.valid?
       the_budget.save
