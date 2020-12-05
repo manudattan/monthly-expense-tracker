@@ -25,7 +25,7 @@ class BudgetsController < ApplicationController
     the_budget = Budget.new
     the_budget.user_id = @current_user.id
     the_budget.date = params.fetch("query_date")
-    the_budget.amount = params.fetch("query_amount")
+    the_budget.amount = params.fetch("query_amount").to_f.round
     the_budget.category_id = params.fetch("query_category_id")
     the_budget.alert_percentage = 0
 
@@ -43,7 +43,7 @@ class BudgetsController < ApplicationController
 
     the_budget.user_id = params.fetch("query_user_id")
     the_budget.date = params.fetch("query_date")
-    the_budget.amount = params.fetch("query_amount")
+    the_budget.amount = params.fetch("query_amount").to_f.round
     the_budget.category_id = params.fetch("query_category_id")
     #the_budget.alert_percentage = params.fetch("query_alert_percentage")
 
